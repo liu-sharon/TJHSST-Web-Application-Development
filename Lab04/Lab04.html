@@ -1,0 +1,118 @@
+<html>
+<head>
+	<title>Scrabble Word Finder</title>
+	<style type="text/css">
+	body{
+		background-color:#d9feb5;
+		font-size:30px;
+		text-align:center;
+		background-image: url("https://www.tjhsst.edu/~2017sliu2/Lab04/Scrabble-Geocache.jpg");
+		background-size:cover;
+	}
+	#first{
+		font-size:30px;
+
+	}
+	rad{
+		font-size:10px;
+	}
+	star{
+		background-color: lightblue;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	//$(document).ready(function(){
+	//	$("#calculator").click(calc);
+	//})
+
+$.get("https://www.tjhsst.edu/~2017sliu2/Lab04/wordsEn.txt",function(returnedData) {
+    $("#element").text(returnedData);
+},"text/plain");
+var text = $("#element").text();
+
+
+var words = text.split("\n");
+var dictionary = new Array();
+for(var i=0; i < words.length; i++) {
+    dictionary[i] = words[i];
+}
+
+	function calc() {
+			var one = document.getElementById('first').value;
+			var ajax = new XMLHttpRequest();
+			//var Regex = /.+a\W/g;
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200) {
+				//	for(var i = 0; i < dictionary.length; i++) {
+					//if(dictionary[i] == one) {
+					document.getElementById('outputDiv').innerHTML = ajax.responseText;
+				}
+	//	}
+				//};
+			}
+			ajax.open("GET", "Lab04PHP.php?num1="+one);
+			ajax.send();
+		}
+
+		function calc2() {
+			var one = document.getElementById('first').value;
+			var ajax = new XMLHttpRequest();
+			//var Regex = /.+a\W/g;
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200) {
+				//	for(var i = 0; i < dictionary.length; i++) {
+					//if(dictionary[i] == one) {
+					document.getElementById('outputDiv').innerHTML = ajax.responseText;
+				}
+	//	}
+				//};
+			}
+			ajax.open("GET", "LAB04PHP2.php?num1="+one);
+			ajax.send();
+		}
+		function calc3() {
+			var one = document.getElementById('first').value;
+			var ajax = new XMLHttpRequest();
+			//var Regex = /.+a\W/g;
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200) {
+				//	for(var i = 0; i < dictionary.length; i++) {
+					//if(dictionary[i] == one) {
+					document.getElementById('outputDiv').innerHTML = ajax.responseText;
+				}
+	//	}
+				//};
+			}
+			ajax.open("GET", "Lab04PHP3.php?num1="+one);
+			ajax.send();
+		}
+		// var num1=document.getElementById("first").value;
+		// var num2=document.getElementById("second").value;
+		// var ajax=new XMLHttpRequest();
+		// ajax.onreadystatechange=function(){
+		// 	if(ajax.readyState==4&&ajax.status==200)
+		// 		document.getElementById("outputDiv").innerHTML=ajax.responseText);
+			
+		// //	console.log(ajax.responseText);
+		// }
+		// ajax.open("GET","postspringbreakpd2.php?num1="+num1+"&num2="+num2);
+		// ajax.send();
+	</script>
+</head>
+<body>
+	<img src=http://www.scrabble-solver.com/_images/Scrabble-Solver.gif alt="starwars" height="162" width="500"><br>
+
+<br>
+<input type="text" id="first"><!--<button onclick='calc()'>Calculate</button>--><br>
+<input type="radio" name="afraid" id="rad" onclick='calc()'>First Letter
+  <input type="radio" name="afraid" id="rad2" onclick='calc2()'>Last Letter
+ <input type="radio" name="afraid" id="rad3"onclick='calc3()'>Nth Letter
+  <!--  <input type="radio" name="afraid" id="rad4">Number of Letters
+  <input type="radio" name="afraid" id="rad5">Number of Vowels
+  <input type="radio" name="afraid" id="rad6">What letters are available?-->
+  <br><br>
+  Results<br>
+	<div id='outputDiv'></div>
+</body>
+</html>

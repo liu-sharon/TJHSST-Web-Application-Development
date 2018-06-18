@@ -1,0 +1,30 @@
+	<html>
+	<head>
+		<title>JQuery Demo</title>
+		<style type="text/css">
+		div{
+			border:4px purple dashed;
+		}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("div").html("This is a div tag").click(function(){
+				$(this).fadeOut().fadeIn()
+				$(this).css("background-color","green")
+			})
+		})
+
+		</script>
+	</head>
+	<body>
+		<div>a</div>
+		<div>b</div>
+		<div>c</div>
+		<div>d</div>
+		<div>e</div>
+		<div>f</div>
+		<div>g</div>
+	</body>
+	</html>
