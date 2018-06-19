@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+      Our Nation's Next President
+    </title>
+    <script type="text/javascript">
+  
+  var list5 = []; 
+  list5["1"] = [" "];
+list5["2"] = ["Donald Trump"];
+list5["3"] = ["Ted Cruz"];
+list5["4"] = ["Marco Rubio"];
+list5["5"] = ["John Kasich"];
+list5["6"] = ["Other"];
+list5["8"] = ["Bernie Sanders"];
+list5["9"] = ["Hillary Clinton"];
+list5["10"] = ["Other"];
+/*
+<option value = "7">Select</option>
+               <option value = "8">Bernie Sanders</option>
+               <option value = "9">Hillary Clinton</option>
+               <option value = "10">Other</option> */
+  var curr;
+  function verifyZipCode(){
+    var inputZip = event.target.value;
+    var Regex = /\b\d{5}\b/g;
+    if(!Regex.test(inputZip))
+      alert("Zip code has to be 5 numerical digits");
+  }
+  function list()
+{
+  list5[size]="5";
+}
+  function fillSelect(nValue,nList){
+var nOption = document.createElement('option'); 
+    //nList.options.length = 1;
+    curr = list5[nValue];
+    for (each in curr)
+      {
+       nOption.appendChild(document.createTextNode(curr[each])); 
+       nOption.setAttribute("value",curr[each]);       
+       nList.appendChild(nOption); 
+      }
+  }
+
+</script>
+    <style type="text/css">
+  body{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Presidential_Elections_2008-2012_Swing_in_County_Margins.svg/2000px-Presidential_Elections_2008-2012_Swing_in_County_Margins.svg.png");
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 30px;
+  }
+  .title{
+    font-size: 50px;
+    text-align:center;
+    color: #005ce6;
+    font-family: Tahoma bold, Geneva bold, sans-serif bold;
+    text-shadow: 4px 4px #9ab3e5;
+  }
+  .title2{
+font-size: 30px;
+text-align:center;
+color: #66ccff;
+  }
+  .questions{
+    font-size: 22px;
+text-align:center;
+color:#005580;
+font-family: Tahoma bold, Geneva bold, sans-serif bold;
+  }
+  #list1{
+font-size: 15px;
+  }
+  #list2{
+font-size: 15px;
+  }
+  #list3{
+font-size: 15px;
+  }
+  #list4{
+font-size: 15px;
+  }
+  #list5{
+font-size: 15px;
+  }
+  #q{
+font-size: 15px;
+  }
+  #q2{
+font-size: 15px;
+
+  }
+  #q3{
+font-size: 15px;
+  }
+  #q4{
+font-size: 15px;
+  }
+  #q5{
+font-size: 15px;
+  }
+  #q6{
+font-size: 15px;
+  }
+  #q7{
+font-size: 15px;
+font-family: Tahoma bold, Geneva bold, sans-serif bold;
+  }
+  #button1{
+    font-size: 30px;
+    margin-left:47%;
+    background-color: #005580;
+    border: none;
+    color: white;
+    padding:5px;
+  }
+  </style>
+  <body>
+    <div class="title">
+    <b>Our Nation's Next President</b>
+  </div>
+  <div class="title2">
+    (in your eyes)
+  </div>
+
+  <br>
+  <div class="questions">
+    <div class="question1">
+    
+    <form action="Lab03PHP.php" method="post">
+      
+       <fieldset>
+          <legend><b>Primaries/Caucuses</b></legend>
+          <p>
+             <label>Who do you think will be the Republican Presidential Nominee?<font color="red">*</font></label>
+             <select name= RepPresident id = "list1" onchange="fillSelect(this.value,this.form['list5'])" required>
+               <option value = "1">Select</option>
+               <option value = "2">Donald Trump</option>
+               <option value = "3">Ted Cruz</option>
+               <option value = "4">Marco Rubio</option>
+               <option value = "5">John Kasich</option>
+               <option value = "6">Other</option>
+             </select><br><br>
+             <label>Who do you think will be the Democratic Presidential Nominee?<font color="red">*</font></label>
+             <select name=DemPresident id = "list2" onchange="fillSelect(this.value,this.form['list5'])" required>
+              <option value = "7">Select</option>
+               <option value = "8">Bernie Sanders</option>
+               <option value = "9">Hillary Clinton</option>
+               <option value = "10">Other</option>
+             </select>
+          </p>
+       </fieldset>
+       <br>
+       
+       <fieldset>
+          <legend><b>General Election</b></legend>
+          <p>
+              <input type="radio" name="drop" onchange="list()">Dropdown
+  <input type="radio" name="drop" onclick="list5.size=5">Listview
+            <br>
+             <label>Who do you think will win the presidency, assuming anyone is viable?<font color="red">*</font></label>
+             <select name = winner id = "list5" required>
+              <option value = "11">Select</option>
+              <option value = "12">Independent</option>
+              <option value = "13">Other</option>
+              <!-- 
+              <option value = "1">Select</option>
+               <option value = "2">Donald Trump</option>
+               <option value = "3">Ted Cruz</option>
+               <option value = "4">Marco Rubio</option>
+               <option value = "5">John Kasich</option>
+               <option value = "6">Bernie Sanders</option>
+               <option value = "7">Hillary Clinton</option>
+               <option value = "9">Independent</option>
+               <option value = "10">Other</option> -->
+             </select>
+
+          </p>
+       </fieldset>
+       <br>
+       <fieldset>
+          <legend><b>All About You</b></legend>
+          <p>
+             <label>What is your name?<font color="red">*</font></label>
+             <input name= yourname type="name" id="q" autocomplete="on" placeholder="e.g. First Last" autofocus required>
+             <br>
+             <label>What city do you live in?<font color="red">*</font></label>
+             <input name= yourcity  type="city" id="q2" autocomplete="on" placeholder="e.g. Los Angeles" required>
+             <br>
+             <label>What state do you live in?<font color="red">*</font></label>
+             <input name= yourstate type="state" id="q3" autocomplete="on" placeholder="e.g. California" required>
+             <br>
+             <label>What is your zip code?<font color="red" onblur="verifyZipCode()">*</font></label>
+             <input name= yourzipcode  type="zipcode" id="q4" autocomplete="on" placeholder="e.g. 99901" required>
+             <br>
+             <label>What is your email?<font color="red">*</font></label>
+             <input name= youremail type="email" id="q5" autocomplete="on" placeholder="user@example.com" required>
+             <br>
+             <label>Date of survey?<font color="red">*</font></label>
+             <input name= yourdate type="date" id="q6" autocomplete="on" required>
+             <br>
+             <label>Who are you voting for in the primaries?</label>
+             <select name= yourvotepri  id = "list3">
+               <option value = "1">Select</option>
+               <option value = "2">Donald Trump</option>
+               <option value = "3">Ted Cruz</option>
+               <option value = "4">Marco Rubio</option>
+               <option value = "5">John Kasich</option>
+               <option value = "6">Bernie Sanders</option>
+               <option value = "7">Hillary Clinton</option>
+               <option value = "8">Other</option>
+               <option value = "9">Not voting but I could</option>
+               <option value = "10">Can't vote</option>
+             </select><br><br>
+             <label>Who are you voting for in the general election, assuming anyone you choose is viable?</label>
+             <select name= yourvotegen id = "list4">
+              <option value = "1">Select</option>
+               <option value = "2">Donald Trump</option>
+               <option value = "3">Ted Cruz</option>
+               <option value = "4">Marco Rubio</option>
+               <option value = "5">John Kasich</option>
+               <option value = "6">Bernie Sanders</option>
+               <option value = "7">Hillary Clinton</option>
+               <option value = "9">Independent</option>
+               <option value = "10">Other</option>
+               <option value = "11">Not voting but I could</option>
+               <option value = "12">Can't vote</option>
+             </select><br><br>
+            <!--  <label>Are you afraid of the future of our country?</label>
+             <br>
+              <input name= afraidyes type="radio" name="afraid">Yes!
+  <input name= afraidno type="radio" name="afraid">No...
+  <input name= afraidwhat type="radio" name="afraid">What?
+            <br>
+            <label>Additional comments? (about this survey, your political positions if notable)</label>
+           <br>
+             <textarea name="q7" cols="50" rows="5" ... ></textarea>-->
+          </p>
+       </fieldset>
+       <br>
+       <input type="submit">
+    </form>
+    </div>
+    <div style="position:fixed; 
+float:right; 
+right:0px; 
+bottom:0px; 
+z-index:2;
+    bottom: 10px;" >
+            <a href="http://tjhsst.edu/~2017sliu2"><img src="https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__home.png"/></a>
+        </div>
+  </div>
+  </body>
+  </head>
+</html>
