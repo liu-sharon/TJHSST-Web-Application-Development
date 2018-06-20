@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>
+			Star Wars Character Quiz
+		</title>
+		<script type="text/javascript">
+		function addNumbers(){
+			var n1=document.getElementById("num1").value;
+			//var n2=document.getElementById("num2").value;
+			console.log(n1);
+			var divTag = document.getElementById('output');
+			divTag.innerHTML = n1;
+
+		}
+
+		function check(id)
+{
+    var n=document.getElementById("num1").value;
+    console.log(n);
+    if (n = "anakin" || "luke")
+    {
+    	var divTag = document.getElementById('output');
+        divTag.innerHTML = n;
+    }
+    else{
+    	divTag.innerHTML = "invalid";
+    }
+}
+
+		</script>
+		
+	<body>
+		<div class="top">
+		<img src=https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png alt="starwars" height="182" width="280"><br>
+		Character Quiz
+	</div>
+	<div class="info">
+		The goal of the quiz is to name as many Star Wars characters (from movies 1-7) as possible in a 5 minute time period. First names are accepted!
+	</div>
+	<!-- onfocus="check(this)"-->
+		<input id="num1" type="text">
+<button onclick="check(this)">
+	Add to your knowledge!
+</button>
+
+<div id='output'></div>
+	</input>
+<div>
+</div>
+	</body>
+	</head>
+</html>

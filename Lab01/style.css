@@ -1,0 +1,32 @@
+@font-face { font-family: "sw"; src: url('http://themes.googleusercontent.com/static/fonts/sueellenfrancisco/v2/TwHX4vSxMUnJUdEz1JIgrrtXaZAN_aGv07JTA91X2HI.woff'); }
+
+body{
+
+			background-image: url("http://primusdatabase.com/images/archive/2/21/20130908025407!Starry_sky.jpg");
+			font-family:"sw";
+			color:#ffff00;
+		}
+
+		.top{
+text-align:center;
+font-size:40px;
+line-height:90%;
+		}
+
+		.info{
+text-align:center;
+font-size:30px;
+		}
+
+		#num1{
+height:30px;
+width:300px;
+font-size:30px;
+margin: 0 auto;
+margin-left: 42%;
+ display:inline-block;
+		}
+
+		#button{
+height:30px;
+		}
