@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>DOM Tree Food Pyramid</title>
+	<style type="text/css">
+	body{
+		background-image: url("http://wallpaperswide.com/download/anime_food_store-wallpaper-1366x768.jpg");
+	}
+div{
+	background-color: purple;
+	border:dashed 2px orange;
+	margin:5px;
+	padding:5px;
+	color: #ffffff;
+	font-family: Arial;
+	border-radius: 15px 50px 30px;
+}
+.outer{
+	background-color:teal;
+}
+.types{
+background-color:green;
+}
+.types1{
+background-color:green;
+}
+.types2{
+background-color:green;
+}
+.types3{
+background-color:green;
+}
+.types4{
+background-color:green;
+}
+.types5{
+background-color:green;
+}
+.types6{
+background-color:green;
+}
+	</style>
+	<script type="text/javascript">
+	function outer(event){
+		//r = event.target;
+		event.target.lastChild.previousSibling.previousSibling.style.backgroundColor = '0000ff';
+	}
+	function outermost(event){
+		//r = event.target;
+		event.target.lastChild.previousSibling.previousSibling.style.backgroundColor = '0000ff';
+	}
+	function inner(event){
+		//r = event.target;
+		if(event.target==event.target.parentNode.lastChild){
+			event.target.parentNode.lastChild.style.backgroundColor = '000000';
+		}
+		event.target.nextSibling.style.backgroundColor = '0000ff';
+	}
+	function innerlast(event){
+		r= r.event.target;
+		r=r.parentNode;
+		r.nextSibling.style.backgroundColor = '0000ff';
+	}
+	</script>
+</head>
+<body>
+<div class="outer" onClick="outer(event)">
+	Food Pyramid
+<div class="types" onClick="outer(event)">Junk Food<div onClick="inner(event)">Pizza</div><div onClick="inner(event)">French Fries</div><div onClick="innerlast(event)">Hamburgers</div></div>
+<div class="types1" onClick="outer(event)">Dairy<div onClick="inner(event)">Milk</div><div onClick="inner(event)">Cheese</div><div>Yogurt</div></div>
+<div class="types2" onClick="outer(event)">Protein<div onClick="inner(event)">Chicken</div><div onClick="inner(event)">Beef</div><div>Eggs</div></div>
+<div class="types3" onClick="outer(event)">Fruits<div onClick="inner(event)">Apples</div><div onClick="inner(event)">Oranges</div><div>Bananas</div></div>
+<div class="types4" onClick="outer(event)">Veggies<div onClick="inner(event)">Celery</div><div onClick="inner(event)">Carrots</div><div>Onions</div></div>
+<div class="types5" onClick="outer(event)">Grains<div onClick="inner(event)">Bread</div><div onClick="inner(event)">Noodles</div><div>Rice</div></div>
+</div>
+</body>
+</html>
