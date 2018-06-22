@@ -1,0 +1,181 @@
+<html>
+<head>
+  <title>Heat Day Calculator</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDz4pv8MdD8fyYYEm7l51FZJ5CoYsHCP5M",
+    authDomain: "finalproject-2a87e.firebaseapp.com",
+    databaseURL: "https://finalproject-2a87e.firebaseio.com",
+    storageBucket: "finalproject-2a87e.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+<style type= "text/css">
+	body{
+  	font-family: 'Lato', sans-serif;
+    font-size:25px;
+    text-align:center;
+    line-height:30px;
+ background-repeat: repeat-x;
+ background: url(http://vignette2.wikia.nocookie.net/fantendo/images/4/49/Realistic-fire-animated-transparent-gif.gif) repeat-x center bottom;
+	}
+  .header{
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+    height: 60px;
+    background-color: #FF3049;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+  position:relative;
+  color:#000000;
+  padding:5px;
+}
+	#title {
+ 	 font-size: 42px;
+  	text-align:center;
+  	color:#ffffff;
+    padding:5px;
+    font-family: 'Lato', sans-serif;
+	}
+	.form{
+ 	margin-left:35%;
+  	line-height:25px;
+
+	}
+  #buffer{
+    line-height:20px;
+  }
+  #cityName{
+    font-size:22px;
+  }
+   #stateName{
+    font-size:22px;
+  }
+  #daysMissed{
+    font-size:22px;
+  }
+  #budget{
+    font-size:22px;
+  }
+  #list{
+    font-size:22px;
+  }
+  #outputData{
+    color:#2D1E4B;
+  }
+  h1{
+font-size:25px;
+  }
+  h2{
+font-size:25px;
+  }
+	button{
+	/* margin-left:45%;*/
+	border-radius: 4px;
+	background-color: #FF3049;
+	color: white;
+	padding: 5px 5px;
+font-size: 26px;
+	font-family: 'Lato', sans-serif;
+  transition: background-color 0.6s;
+	}
+  button:hover{
+    background-color: #000000;
+
+  }
+
+</style>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" > </script>
+    <script type="text/javascript">
+    function generateOutput(){
+      //var city= $("#cityName").val();
+      //var state = $("stateName").val();+
+      var requestData = 'http://api.wunderground.com/api/c6dc8e785d943109/conditions/q/'+$('#stateName').val()+'/'+$('#cityName').val()+'.json'; 
+      var resultElement = $('#outputData');
+      var days = $('#daysMissed').val();
+      var choice = document.getElementById("list");
+      var budget = document.getElementById("budget");
+      var strUser = choice.options[choice.selectedIndex].text;
+      console.log(strUser);
+      var count=0;
+       $.ajax({
+        url:requestData,
+        //data:{
+        //  q:city&APPID
+        //},
+        dataType: "jsonp",
+          method: 'get',
+           success: function (data) {
+            resultElement.html('Weather: ' + data.current_observation.weather+'<br/>'+'Temperature: '+data.current_observation.temp_f);
+            var weather = data.current_observation.weather;
+            var temp = data.current_observation.temp_f;
+            console.log(weather);
+            if(temp>80){
+              count+=temp-80;
+              //console.log(count);
+            }
+            if(budget<40){
+              count+=5;
+              //console.log(count);
+            }
+            count+=parseInt(days)+parseInt(strUser);
+            document.getElementById("demo").innerHTML = "You have an "+count.toFixed(2) + " percent chance of having a heat day.";
+            console.log(count);
+            firebase.database().ref('users/' + 'userId').set({
+    username: "hi",
+    email: "lol"
+  });
+        }
+  
+      });
+    }
+    </script>
+</head>
+
+<body>
+  
+  <div class="header"><div id="title">
+    Heat Day Calculator</div>
+  </div><br>
+ <h1>City Name: <input id='cityName'placeholder="e.g. Alexandria"></input></h1>
+ <h2>State Name: <input id = 'stateName'placeholder="e.g. Virginia"></input></h2>
+ Number of School Days Missed: <input id = 'daysMissed'placeholder="e.g. 2"></input><br> <br>
+ County Educational Budget (% of total budget): <input id = 'budget'placeholder="e.g. 40"></input><br> <div id='buffer'></div>
+  <br>
+  Leniency of school board (1 - none, 10 - very):
+    <select id = "list" required>
+      <option value = "1">1</option>
+      <option value = "2">2</option>
+      <option value = "3">3</option>
+      <option value = "4">4</option>
+	  <option value = "5">5</option>
+	  <option value = "6">6</option>
+	  <option value = "7">7</option>
+	  <option value = "8">8</option>
+	  <option value = "9">9</option>
+	  <option value = "10">10</option>
+      </select><br>
+      <br>
+  <button id='button' onclick= 'generateOutput()'>Possibility of a Heat Day?</button>
+  <div id='outputData'></div>
+  <p id="demo"></p><br>
+  <div style="position:fixed; 
+float:left; 
+ background-repeat: repeat-x;
+ /*
+ width:200px;
+     bottom: 10px;
+     height:100px;*/
+ background-image: url('http://vignette2.wikia.nocookie.net/fantendo/images/4/49/Realistic-fire-animated-transparent-gif.gif');
+ " >
+<!--<img src="http://vignette2.wikia.nocookie.net/fantendo/images/4/49/Realistic-fire-animated-transparent-gif.gif/revision/latest?cb=20150324012556"/>-->
+        </div>
+</body>
+</html>
