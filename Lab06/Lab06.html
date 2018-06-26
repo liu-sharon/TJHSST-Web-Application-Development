@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<!--Made by Sharon Liu. (2016)
+    Made for Web App Development at TJHSST.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <title>Street View side-by-side</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color:#99ffcc;
+        line-height:35px;
+
+      }
+      #map, #pano {
+        float: left;
+        height: 100%;
+        width: 50%;
+      }
+      #title {
+        text-align: center;
+        font-family: 'Arial';
+        font-size:25px;
+        color: #000099;
+      }
+      #first{
+        margin-left: 42%;
+      }
+      /*
+      #button{
+        height:30px;
+      }*/
+    </style>
+  </head>
+  <body>
+	  
+	   <div id="title">Street View - enter coordinates.</div>
+    <input type="text" id="first"><input type="text" id="second"><button onclick='initialize( )'>
+  See street view!
+</button><br>
+	
+    <div id="map"></div>
+    <div id="pano"></div>
+    <script src="GoogleMapsAPI.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvVHkNCVIZDrtb9OntmX0hgjIRU7Iy2ts&callback=initialize">
+    </script>
+  </body>
+</html>
