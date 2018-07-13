@@ -1,3 +1,3 @@
 # TJHSST-Web-Application-Development
 
-Web application projects made in Web Development class at TJHSST
+Web application projects made in Web Development class at TJHSST.
