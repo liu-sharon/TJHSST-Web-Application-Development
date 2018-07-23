@@ -1,0 +1,53 @@
+<html>
+<!--Sharon Liu (2016) -->
+<head>
+	<title>Ion</title>
+<style type="text/css">
+body{
+	background:yellow;
+}</style>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+function generateOutput(){
+	var days=$("#numDays").val();//document.getelementbyid(numdays).value
+	$.ajax({
+		url:"https://ion.tjhsst.edu/api/schedule",
+		data:{
+			page_size:days
+		},
+		dataType:"JSON",
+		success:function(result){//when it works
+			console.log(result);
+			var outputStr="";
+			for(var k=0;k<days;k++){
+				outputStr+=result.results[k].day_type.name;
+				outputStr+="<br>";
+				var temp=result.results[k].day_type.blocks;
+				for(var x=0;x<temp.length;x++){
+					outputStr+=temp[x].name;
+
+					outputStr+="<br>";
+outputStr+=temp[x].start;
+					outputStr+="<br>";
+outputStr+=temp[x].end;
+					outputStr+="<br>";
+
+					outputStr+="<br>";
+				}
+				outputStr+="<br>";
+			}
+			$("#outputSchedule").html(outputStr);
+
+		}
+	})
+}
+</script>
+</head>
+<body>
+<input id='numDays'>
+<div id='outputSchedule'></div>
+<button onclick='generateOutput()'>Show The Schedule</button>
+</body>
+</html>
