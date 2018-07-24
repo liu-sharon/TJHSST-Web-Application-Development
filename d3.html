@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>D3 Bar Graph</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript">
+var data=[5,4,10,13,37,6];
+
+//function myFunction() {
+data.sort(function(a,b){
+
+	return a-b;
+});
+//}
+$(document).ready(function(){
+	//console.log(data);
+	d3.select("#myGraph") //select our div
+	.selectAll("div") //what we want to exist
+	.data(data) //set the data
+
+	.enter().append("div") //div for each
+	.text(function(d){return d;}) //text
+	.attr("class","bar") //styling
+	.style("width",function(d){
+		return (d*12)+"px"; //width based on number
+	})
+})
+
+</script>
+<style type="text/css">
+.bar{
+	background-color:#ccffcc;
+	width:200px;
+	border:2px pink solid;
+}
+</style>
+</head>
+<body>
+<div id="myGraph"></div>
+</body>
+</html>
