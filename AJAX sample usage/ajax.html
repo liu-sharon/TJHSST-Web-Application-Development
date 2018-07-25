@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>First AJAX Call</title>
+	<style type="text/css">
+		body {
+			background-color: teal;
+		}
+	</style>
+	<script type="text/javascript">
+		function calc () {
+			var one = document.getElementById('first').value;
+			var two = document.getElementById('second').value;
+			var ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200) {
+					document.getElementById('outputDiv').innerHTML = "lol";
+				};
+			}
+			ajax.open("GET", "postspringbreakpd2.php?num1="+one+"&num2="+two);
+			ajax.send();
+		}
+	</script>
+</head>
+<body>
+	<input type='text' id='first'>
+	<input type='text' id='second'>
+	<button onclick='calc()'>Calculate</button>
+	<div id='outputDiv'></div>
+</body>
+</html>
